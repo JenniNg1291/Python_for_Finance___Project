@@ -33,6 +33,7 @@ his_price_df = his_price_df.assign(Profit_n_loss = profit_n_loss )
 
 his_price_df.rename(columns = {'Profit_n_loss':'Profit and loss'}, inplace = True)
 his_price_df.rename(columns = {'Forward_price':'Forward price'}, inplace = True)
+his_price_df.rename(columns = {'Date':'Year'}, inplace = True)
 
 # Export data to excel
 writer = pd.ExcelWriter("output.xlsx", engine='openpyxl')
@@ -59,12 +60,8 @@ chart_fp.x_axis.title = 'Year'
 chart_fp.y_axis.title = 'Forward price'
 chart_fp.type = 'col'
 
-#x_values = Reference(ws, min_col=1, min_row=2, max_row=1+len(his_price_df.index))
 y_fp = Reference(ws, min_col=5, min_row=1, max_row=1+len(his_price_df.index), max_col=5)
-
 chart_fp.add_data(y_fp, titles_from_data=True)
-#chart_fp.set_categories(x_values)
-
 
 # LineChart - Profit and Loss
 chart_pnl = LineChart()
@@ -77,8 +74,6 @@ chart_pnl.y_axis.title = "PnL"
 
 chart_fp += chart_pnl
 ws.add_chart(chart_fp, "H4") 
-
-
 
 writer.close()
 
