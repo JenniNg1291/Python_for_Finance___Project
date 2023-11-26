@@ -26,7 +26,7 @@
 
 1. Clone the repo
    ```sh
-   git clone X
+   git clone https://github.com/JenniNg1291/Python_for_Finance___Project.git
    ```
 3. Install pandas 
    ```sh
